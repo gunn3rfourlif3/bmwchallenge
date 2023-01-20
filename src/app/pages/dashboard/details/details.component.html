@@ -1,0 +1,67 @@
+<div
+  class="container px-4 py-5"
+  *ngIf="data else spinner"
+>
+  <a
+    [routerLink]="['../../list']"
+    class="icon-link d-inline-flex align-items-center mb-2"
+  >
+    Go Back to List
+  </a>
+  <h2 class="pb-2 border-bottom">{{ data?.properties?.title }}</h2>
+
+  <div class="row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-5">
+    <div class="col">
+      <div class="row row-cols-1 row-cols-sm-2 g-4">
+        <div class="col d-flex flex-column gap-2">
+          <h4 class="fw-semibold mb-0">Place</h4>
+          <p class="text-muted">{{ data?.properties?.place }}</p>
+        </div>
+
+        <div class="col d-flex flex-column gap-2">
+          <h4 class="fw-semibold mb-0">Magnitude</h4>
+          <p class="text-muted">{{ data?.properties?.mag }}</p>
+        </div>
+
+        <div class="col d-flex flex-column gap-2">
+          <h4 class="fw-semibold mb-0">Time</h4>
+          <p class="text-muted">{{data.properties.time | date: 'medium'}}</p>
+        </div>
+
+        <div class="col d-flex flex-column gap-2">
+          <h4 class="fw-semibold mb-0">Significance</h4>
+          <p class="text-muted">{{data.properties.sig}}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="row row-cols-1 row-cols-sm-2 g-4">
+        <div class="col d-flex flex-column gap-2">
+          <h4 class="fw-semibold mb-0">Last Updated</h4>
+          <p class="text-muted">{{data.properties.updated | date: 'medium'}}</p>
+        </div>
+
+        <div class="col d-flex flex-column gap-2">
+          <h4 class="fw-semibold mb-0">Status</h4>
+          <p class="text-muted">{{data.properties.status || '-'}}</p>
+        </div>
+
+        <div class="col d-flex flex-column gap-2">
+          <h4 class="fw-semibold mb-0">RMS</h4>
+          <p class="text-muted">{{ data.properties.rms || '-' }}</p>
+        </div>
+
+        <div class="col d-flex flex-column gap-2">
+          <h4 class="fw-semibold mb-0">GAP</h4>
+          <p class="text-muted">{{ data.properties.gap || '-' }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #spinner>
+  <div class="text-center">
+    <img src="/assets/spinner.svg">
+  </div>
+</ng-template>
